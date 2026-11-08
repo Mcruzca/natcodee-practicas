@@ -1,0 +1,48 @@
+
+@{
+    Layout = null;
+    var gridProducto = new WebGrid(ViewBag.ListaProducto, canPage: true);
+    var gridCliente = new WebGrid(ViewBag.ListaCliente, canPage: true);
+    var gridProveedor = new WebGrid(ViewBag.ListaProveedor, canPage: true);
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Consultas</title>
+    <link href="~/Styles/Provias.css" rel="stylesheet"/>
+</head>
+<body>
+    <div>
+        <div class="Titutlo"> Arquitectura con capas: 1 Request, N Conexiones, N Comandos, N Cursores, Binding+HTML <span id="spnTiempo"></span></div>
+        <div class="Subtitulo">Lista de Productos</div>
+        @gridProducto.GetHtml(null, "FilaCabecera", "FilaCabecera", "FilaDatos", "FilaDatosPar")
+        <div class="Subtitulo">Lista de Clientes</div>
+        @gridCliente.GetHtml(null, "FilaCabecera", "FilaCabecera", "FilaDatos", "FilaDatosPar")
+        <div class="Subtitulo">Lista de Proveedores</div>
+        @gridProveedor.GetHtml(null, "FilaCabecera", "FilaCabecera", "FilaDatos", "FilaDatosPar")
+    </div>
+    <script>
+        window.onload = function () {
+            setTimeout(function () {
+                var tiempo = 0;
+                if (window.performance && window.performance.timing) {
+                    var t = window.performance.timing;
+                    tiempo = t.loadEventEnd - t.navigationStart;
+                    if (tiempo <= 0) {
+                        tiempo = new Date().getTime() - t.navigationStart;
+                    }
+                } else if (window.performance && window.performance.now) {
+                    tiempo = Math.round(performance.now());
+                }
+                var spn = document.getElementById("spnTiempo");
+                if (spn && tiempo > 0) {
+                    spn.innerHTML = tiempo + " msg";
+                }
+            }, 0);
+        };
+    </script>
+</body>
+</html>
