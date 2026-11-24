@@ -1,0 +1,26 @@
+﻿body {
+    background-color: lightcoral;
+}
+.Titutlo{
+    font-size: xx-large;
+    color: white;
+    background-color:black;
+}
+.Subtitulo {
+    font-size: x-large;
+    color: black;
+    background-color: white;
+}
+.FilaCabecera {
+    color: white;
+    background-color:cadetblue;
+    
+}
+.FilaDatos {
+    color: blue;
+    background-color: white;
+}
+.FilaDatosPar {
+    color: white;
+    background-color: green;
+}
